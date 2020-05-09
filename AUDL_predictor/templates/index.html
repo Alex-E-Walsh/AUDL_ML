@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The HTML5 Herald">
+  <title>AUDL Machine Learning Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- <script type = "javascript" src = "./lib/jquery.js"></script> -->
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "{{url_for('static',filename='JS/teamsHtmls.js')}}"> </script>
+  <script src = "{{url_for('static',filename='JS/select.js')}}"> </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+  <div id = "topBanner" >
+  <h1>AUDL Game Predictor</h1>
+  </div>
+         <!-- Main Input For Receiving Query to our ML -->
+    <div id = "ml_form">
+      <form action="{{ url_for('predict')}}" method="post">
+
+        <div id="selecting" >
+        <!-- Home Team -->
+        <div id = "home_team" class="team">
+        <label for = "homeYear"> Home Team:</label>
+        <select name = "homeYear" id = "year_select_home" class="year_select" required>
+        <option value="none" selected disabled hidden>
+          Select Year
+        </option>
+          <option value = 19>19</option>
+          <option value = 18>18</option>
+          <option value = 17>17</option>
+          <option value = 16>16</option>
+          <option value = 15>15</option>
+          <option value = 14>14</option>
+          <option value = 13>13</option>
+          <option value = 12>12</option>
+          </select>
+
+        <label for = "hometeam"></label>
+
+        <select name = "homeTeam" id = "hometeam" class = "team_select" required>
+          <option value="none" selected disabled hidden>
+            Select Team:
+          </option>
+          </select>
+          </div>
+
+
+      <!-- Away team -->
+      <div id="away_team" class="team">
+      <label for="awayYear"> Away team:</label>
+      <select name = "awayYear" id="year_select_away" class="year_select" required>
+          <option value="none" selected disabled hidden>
+            Select Year
+          </option>
+            <option value = 19>19</option>
+            <option value = 18>18</option>
+            <option value = 17>17</option>
+            <option value = 16>16</option>
+            <option value = 15>15</option>
+            <option value = 14>14</option>
+            <option value = 13>13</option>
+            <option value = 12>12</option>
+        </select>
+
+        <label for="awayteam"></label>
+        <select name = "awayTeam" id = "awayteam" class = "team_select" required>
+          <option value="none" selected disabled hidden>
+            Select Team:
+          </option>
+          </select>
+        </div>
+
+      </div>
+
+      <div id="submitButtonBox">
+      <input id="submitButton" type = "submit">
+    </div>
+
+      </form>
+
+
+      <div id="result">
+        {{prediction_text}}
+        </div>
+
+   </div>
+
+   <div id = "about_the_project" >
+     <h2>About the Project: </h2>
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+     </div>
+
+   <img id = "AUDL_logo" src = "{{ url_for('static', filename='images/AUDL_logo.jpeg')}}" >
+  </body>
+</html>
